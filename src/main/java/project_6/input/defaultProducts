@@ -1,0 +1,3 @@
+{type: food}, {name: bread}, {sku: 300}, {weight: 0.2}, {purchasePrice: 10}, {salePrice: 20}, {calories: 100}, {count: 12}, {endData: 5}
+{type: alcohol}, {name: beer}, {sku: 200}, {weight: 0.2}, {purchasePrice: 105}, {salePrice: 200}, {calories: 180}, {count: 21}, {endData: 30}
+{type: cigarettes}, {name: LD}, {sku: 100}, {weight: 150.0}, {purchasePrice: 20.0}, {salePrice: 300.0}, {calories: 180}, {count: 21}, {endData: 30}

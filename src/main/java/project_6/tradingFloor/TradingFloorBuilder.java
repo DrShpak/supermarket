@@ -16,20 +16,22 @@ import java.util.Date;
 public class TradingFloorBuilder {
     private final ProductFactory factory = new ProductFactory();
 
-    //билдер, сразу махом добалвяем кучу продуктов
+
     public TradingFloorBuilder setDefaultStuffInStorage() throws IOException {
-        final var source = (ArrayList<String>) Files.readAllLines(Paths.get("/Users/test/Documents/Java programmes/supermarket/src/main/java/project_6/input/defaultProducts"));
+        final var source = (ArrayList<String>) Files.readAllLines(Paths.get("/Users/antonchaika/IdeaProjects/supermarket/src/main/java/project_6/input/defaultProducts"));
         for (String line : source) {
             Storage.addPosition(createPosition(line));
         }
         return this;
     }
 
+    //создаем позицию, путем парсинга строки (разбиваем на аргументы ее)
     private Position createPosition(String line) {
         final var strArr = line.split(",");
-        return new Position(factory.getProduct(getType(line), getSubString(strArr)), getData(strArr), 10);
+        return new Position(factory.getProduct(getType(line), getSubString(strArr)), getData(strArr), getCount(strArr));
     }
 
+    //парсим тип продукта
     private ProductTypes getType(String line) {
         if (line.contains("food")) {
             return ProductTypes.FOOD;
@@ -37,12 +39,11 @@ public class TradingFloorBuilder {
             return ProductTypes.ALCOHOL;
         } else if (line.contains("cigarettes")) {
             return ProductTypes.CIGARETTES;
-        } else if (line.contains("technique")) {
-            return ProductTypes.TECHNIQUE;
         }
         return null;
     }
 
+    //получаем аргументы в виде строкового массива для продукта
     private String[] getSubString(String[] line) {
         final var dictionary = new String[] {"name", "sku", "weight", "purchasePrice", "salePrice", "calories"};
         var temp = new String[dictionary.length];
@@ -59,6 +60,21 @@ public class TradingFloorBuilder {
         return temp;
     }
 
+    //парсим кол-во продукта на складе
+    private int getCount(String[] arr) {
+        for (String element : arr) {
+            if (element.contains("count")) {
+                var count = element.substring(element.indexOf(": ") + 1, element.indexOf("}")).trim();
+                return Integer.parseInt(count);
+            }
+        }
+        return 0;
+    }
+
+    //пустанвока даты
+    /*
+        к текущей дате прибавляем срок годности (в днях) и получаем дату окончания срока годности
+     */
     private Date getData(String[] arr) {
         var data = new Date();
 

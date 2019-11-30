@@ -29,6 +29,7 @@ public class Storage {
         return positions;
     }
 
+    @SuppressWarnings("unused")
     public boolean isEmpty() {
         return positions.isEmpty();
     }

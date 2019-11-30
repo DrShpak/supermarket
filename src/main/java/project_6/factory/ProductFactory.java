@@ -8,11 +8,19 @@ import project_6.products.Product;
 public class ProductFactory {
 
     public Product getProduct(ProductTypes type, String[] param) {
-        return switch (type) {
-            case FOOD -> new Food(param);
-            case ALCOHOL -> new Alcohol(param);
-            case CIGARETTES -> new Cigarettes(param);
-            default -> null;
-        };
+        Product toReturn = null;
+        switch (type) {
+            case FOOD:
+                toReturn = new Food(param);
+                break;
+            case ALCOHOL:
+                toReturn = new Alcohol(param);
+                break;
+            case CIGARETTES:
+                toReturn = new Cigarettes(param);
+                break;
+            default:
+        }
+        return toReturn;
     }
 }

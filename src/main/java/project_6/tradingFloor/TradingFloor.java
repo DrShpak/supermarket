@@ -55,7 +55,7 @@ public class TradingFloor {
     }
 
     private void makeSale() {
-        System.out.println("Список артикулов с кратким описанием товара:");
+        System.out.println("Список товаров с кратким описанием:");
         printProducts();
         System.out.println("Введите скидку на товар в процентах(!!): ");
         var sale = input.nextInt();
@@ -138,7 +138,7 @@ public class TradingFloor {
     }
 
     private void printProducts() {
-        System.out.println("Список артикулов с кратким описанием товара:");
+        System.out.println("Список товаров с кратким описанием:");
         int[] index = {0};
         Storage.getPositions().
             forEach(x -> System.out.println(++index[0] + ". "
@@ -146,7 +146,8 @@ public class TradingFloor {
                 + x.getProduct().getName() + "; "
                 + x.getProduct().getSalePrice() + " rub.; "
                 + "содержит калорий: " + x.getProduct().getCalories() + "; "
-                + "срок годности: " + x.getEndDate()
+                + "срок годности: " + x.getEndDate() + "; "
+                + "количество штук на складе: " + x.getCount()
             ));
     }
 }

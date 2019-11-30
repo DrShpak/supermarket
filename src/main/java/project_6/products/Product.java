@@ -1,17 +1,17 @@
 package project_6.products;
 
-import project_6.facades.IProductProvider;
-
 import java.util.ArrayDeque;
 import java.util.Deque;
 import java.util.Objects;
 
-public abstract class Product implements IProductProvider {
+public abstract class Product {
     private final String name;
+    @SuppressWarnings({"unused", "FieldCanBeLocal"})
     private final double weight;
     private final int calories;
     private final Deque<Double> salePrices = new ArrayDeque<>();
     private int skuNumber;
+    @SuppressWarnings({"unused", "FieldCanBeLocal"})
     private final double purchasePrice;
     private double salePrice;
 
@@ -38,18 +38,6 @@ public abstract class Product implements IProductProvider {
         return skuNumber;
     }
 
-    public void setSkuNumber(int skuNumber) {
-        this.skuNumber = skuNumber;
-    }
-
-    public double getWeight() {
-        return weight;
-    }
-
-    public double getPurchasePrice() {
-        return purchasePrice;
-    }
-
     public double getSalePrice() {
         return salePrice;
     }
@@ -58,6 +46,7 @@ public abstract class Product implements IProductProvider {
         return calories;
     }
 
+    //продукты равны если равны их имена и класс (Food, Alcohol etc.)
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

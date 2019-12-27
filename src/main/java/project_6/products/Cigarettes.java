@@ -5,9 +5,10 @@ public class Cigarettes extends Product {
     private int age = 18;
 
     //конструктор
+    @SuppressWarnings("unused")
     public Cigarettes(String name, int skuNumber, double weight,
-                double purchasePrice, double salePrice, int calories) {
-        super(name, skuNumber, weight, purchasePrice, salePrice, calories);
+                      double purchasePrice, double salePrice, int calories) {
+        super(name, skuNumber, salePrice, calories);
     }
 
     public Cigarettes(String[] param) {

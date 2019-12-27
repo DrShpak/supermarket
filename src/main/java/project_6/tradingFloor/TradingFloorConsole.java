@@ -9,17 +9,14 @@ import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
-public class TradingFloor {
-
-
+public class TradingFloorConsole {
     @SuppressWarnings("FieldCanBeLocal")
     private final int diff = (int) 8.76e7; //сутки в мс
     private final Scanner input = new Scanner(System.in);
 
-    //todo добавить поддержку множества покупателей
     private final Buyer buyer;
 
-    TradingFloor(Buyer buyer) {
+    TradingFloorConsole(Buyer buyer) {
         this.buyer = buyer;
     }
 
@@ -129,9 +126,9 @@ public class TradingFloor {
 
         //парсим продукты: удаляем пробелы и разделяем строку по запятой
         //и получаем строковый массив из артикулов продуктов
-        var nums = choose.replaceAll("\\s", "").split(",");
+        var numbers = choose.replaceAll("\\s", "").split(",");
         var positions = new ArrayList<Position>();
-        for (String num : nums) {
+        for (String num : numbers) {
             positions.add(Storage.getPositions().get(Integer.parseInt(num) - 1));
         }
         return positions;

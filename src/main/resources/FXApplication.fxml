@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project_6.ui.fxUI.application.FXApplication">
+    <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#addAge" text="AddAge" AnchorPane.topAnchor="15.0" />
+    <Button layoutX="168.0" layoutY="15.0" mnemonicParsing="false" onAction="#addCalories" text="AddCalories" AnchorPane.topAnchor="15.0" />
+    <Button layoutX="82.0" layoutY="15.0" mnemonicParsing="false" onAction="#addCredits" text="AddCredits" AnchorPane.topAnchor="15.0" />
+   <TableView fx:id="buyerView" layoutX="15.0" layoutY="68.0" prefHeight="74.0" prefWidth="570.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0">
+     <columns>
+       <TableColumn fx:id="buyerName" prefWidth="75.0" text="name" />
+       <TableColumn fx:id="buyerAge" prefWidth="75.0" text="age" />
+         <TableColumn fx:id="buyerCredits" prefWidth="75.0" text="credits" />
+         <TableColumn fx:id="buyerCalories" prefWidth="75.0" text="calories" />
+     </columns>
+   </TableView>
+   <TableView fx:id="shopping" layoutX="15.0" layoutY="163.0" prefHeight="74.0" prefWidth="570.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0">
+      <columns>
+         <TableColumn fx:id="shoppingCount" prefWidth="75.0" text="count" />
+         <TableColumn fx:id="shoppingSku" prefWidth="75.0" text="skuNumber" />
+         <TableColumn fx:id="shoppingName" prefWidth="75.0" text="name" />
+         <TableColumn fx:id="shoppingPrice" prefWidth="75.0" text="price" />
+         <TableColumn fx:id="shoppingCalories" prefWidth="75.0" text="calories" />
+      </columns>
+   </TableView>
+   <Label layoutX="14.0" layoutY="51.0" text="buyers" />
+   <Label layoutX="14.0" layoutY="142.0" text="shoppingList" />
+   <Label layoutX="14.0" layoutY="237.0" text="storage" />
+   <TableView fx:id="storage" layoutX="15.0" layoutY="255.0" prefHeight="132.0" prefWidth="570.0" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="253.0">
+      <columns>
+         <TableColumn fx:id="storageCount" prefWidth="75.0" text="count" />
+         <TableColumn fx:id="storageSku" prefWidth="75.0" text="skuNumber" />
+         <TableColumn fx:id="storageName" prefWidth="75.0" text="name" />
+         <TableColumn fx:id="storagePrice" prefWidth="75.0" text="price" />
+         <TableColumn fx:id="storageCalories" prefWidth="75.0" text="calories" />
+      </columns>
+   </TableView>
+   <Button fx:id="SaleButton" disable="true" layoutX="518.0" layoutY="15.0" mnemonicParsing="false" text="MakeSale" AnchorPane.rightAnchor="15.0" />
+   <TextField fx:id="SaleValue" layoutX="438.0" layoutY="15.0" prefHeight="26.0" prefWidth="80.0" />
+   <Button layoutX="402.0" layoutY="15.0" mnemonicParsing="false" onAction="#buy" text="Buy" />
+</AnchorPane>

@@ -1,24 +1,38 @@
 package project_6.buyer;
 
+import com.j256.ormlite.field.DataType;
+import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.table.DatabaseTable;
 import project_6.misc.Position;
 import project_6.products.Alcohol;
 import project_6.products.Cigarettes;
 import project_6.products.Product;
 
 import java.util.ArrayList;
-import java.util.List;
 
+@DatabaseTable(tableName = "buyer")
 public class Buyer {
+    @DatabaseField(id = true)
+    private String name;
+    @DatabaseField
     private double capital;
-    private final List<Position> shoppingList;
-    private final int age;
+    @DatabaseField(dataType = DataType.SERIALIZABLE)
+    private ArrayList<Position> shoppingList;
+    @DatabaseField
+    private int age;
+    @DatabaseField
     private int calories;
 
-    public Buyer(double capital, int age, ArrayList<Position> shoppingList, int calories) {
+    @SuppressWarnings({"unused", "SpellCheckingInspection"}) //ormlite requires this empty constructor
+    public Buyer() {
+    }
+
+    public Buyer(String name, double capital, int age, int calories) {
+        this.name = name;
         this.capital = capital;
         this.age = age;
-        this.shoppingList = shoppingList;
         this.calories = calories;
+        this.shoppingList = new ArrayList<>();
     }
 
     public <T extends Product> boolean isAdult(T product) {
@@ -79,7 +93,7 @@ public class Buyer {
     }
 
     public ArrayList<Position> getShoppingList() {
-        return (ArrayList<Position>) shoppingList;
+        return shoppingList;
     }
 
     public void addPosition(Position position) {
@@ -92,5 +106,17 @@ public class Buyer {
 
     public void setCalories(int calories) {
         this.calories = calories;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public Integer getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
     }
 }

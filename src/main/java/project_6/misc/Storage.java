@@ -11,18 +11,28 @@ public class Storage {
         }
     }
 
+    private static Position getSurePos(Position pos) {
+        var surePosOpt = positions.stream().filter(x -> x.equals(pos)).findFirst();
+        if (surePosOpt.isEmpty()) {
+            return null;
+        }
+        return surePosOpt.get();
+    }
+
     public static void deleteItem(Position pos) {
-        if (pos.getCount() > 1) {
-            pos.setCount(pos.getCount() - 1);
+        var surePos = getSurePos(pos);
+        if (surePos != null && surePos.getCount() > 0) {
+            surePos.setCount(surePos.getCount() - 1);
         }
     }
 
     public static int getResidue(Position pos) {
-        return pos.getCount();
+        var surePos = getSurePos(pos);
+        return surePos != null ? surePos.getCount() : -1;
     }
 
     public static void removeProduct(Position pos) {
-        positions.remove(pos);
+        positions.remove(getSurePos(pos));
     }
 
     public static List<Position> getPositions() {

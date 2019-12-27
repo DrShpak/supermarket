@@ -6,7 +6,6 @@ import project_6.products.Food;
 import project_6.products.Product;
 
 public class ProductFactory {
-
     public Product getProduct(ProductTypes type, String[] param) {
         Product toReturn = null;
         switch (type) {

@@ -2,10 +2,10 @@ package project_6.products;
 
 public class Food extends Product {
 
-    @SuppressWarnings("WeakerAccess")
+    @SuppressWarnings({"WeakerAccess", "unused"})
     public Food(String name, int skuNumber, double weight,
                 double purchasePrice, double salePrice, int calories) {
-        super(name, skuNumber, weight, purchasePrice, salePrice, calories);
+        super(name, skuNumber, salePrice, calories);
     }
 
     //для фабрики конструктор, он вызывает основной конструктор (он выше)

@@ -2,10 +2,11 @@ package project_6.misc;
 
 import project_6.products.Product;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
 
-public class Position {
+public class Position implements Serializable {
     private final Product product;
     private final Date endDate;
     private int count;

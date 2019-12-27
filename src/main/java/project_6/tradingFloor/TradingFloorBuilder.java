@@ -18,7 +18,7 @@ public class TradingFloorBuilder {
 
 
     public TradingFloorBuilder setDefaultStuffInStorage() throws IOException {
-        final var source = (ArrayList<String>) Files.readAllLines(Paths.get("/Users/antonchaika/IdeaProjects/supermarket/src/main/java/project_6/input/defaultProducts"));
+        final var source = (ArrayList<String>) Files.readAllLines(Paths.get("src/main/java/project_6/input/defaultProducts"));
         for (String line : source) {
             Storage.addPosition(createPosition(line));
         }
@@ -28,6 +28,7 @@ public class TradingFloorBuilder {
     //создаем позицию, путем парсинга строки (разбиваем на аргументы ее)
     private Position createPosition(String line) {
         final var strArr = line.split(",");
+        //noinspection ConstantConditions
         return new Position(factory.getProduct(getType(line), getSubString(strArr)), getData(strArr), getCount(strArr));
     }
 
@@ -90,7 +91,11 @@ public class TradingFloorBuilder {
         return new Date();
     }
 
-    public TradingFloor build(Buyer buyer) {
-        return new TradingFloor(buyer);
+    public TradingFloorConsole build(Buyer buyer) {
+        return new TradingFloorConsole(buyer);
+    }
+
+    public TradingFloorFx buildFx() {
+        return new TradingFloorFx();
     }
 }

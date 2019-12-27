@@ -4,10 +4,10 @@ public class Alcohol extends Product {
     @SuppressWarnings("FieldCanBeLocal")
     private final int age = 18;
 
-    @SuppressWarnings("WeakerAccess")
+    @SuppressWarnings({"unused"})
     public Alcohol(String name, int skuNumber, double weight,
                 double purchasePrice, double salePrice, int calories) {
-        super(name, skuNumber, weight, purchasePrice, salePrice, calories);
+        super(name, skuNumber, salePrice, calories);
     }
 
     public Alcohol(String[] params) {

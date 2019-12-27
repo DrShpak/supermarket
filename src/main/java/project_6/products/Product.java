@@ -1,27 +1,22 @@
 package project_6.products;
 
+import java.io.Serializable;
 import java.util.ArrayDeque;
 import java.util.Deque;
 import java.util.Objects;
 
-public abstract class Product {
+public abstract class Product implements Serializable {
     private final String name;
-    @SuppressWarnings({"unused", "FieldCanBeLocal"})
-    private final double weight;
     private final int calories;
     private final Deque<Double> salePrices = new ArrayDeque<>();
-    private int skuNumber;
-    @SuppressWarnings({"unused", "FieldCanBeLocal"})
-    private final double purchasePrice;
+    private final int skuNumber;
     private double salePrice;
 
     @SuppressWarnings("WeakerAccess")
-    protected Product(String name, int skuNumber, double weight,
-                      double purchasePrice, double salePrice, int calories) {
+    protected Product(String name, int skuNumber,
+                      double salePrice, int calories) {
         this.name = name;
         this.skuNumber = skuNumber;
-        this.weight = weight;
-        this.purchasePrice = purchasePrice;
         this.salePrice = salePrice;
         this.calories = calories;
     }
